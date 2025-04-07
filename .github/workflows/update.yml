@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 10 * * 3'  # Every Wednesday at 10:00 UTC
+    - cron: '0 10 * * 3'  # Every Wednesday at 10:00 
 
 jobs:
   parse-pdf:
