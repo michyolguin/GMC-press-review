@@ -1,1 +1,36 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GMC Press Review</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
+    .entry { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #ccc; }
+    .entry h2 { margin: 0 0 0.2em; }
+    .entry a { text-decoration: none; color: #1a0dab; }
+  </style>
+</head>
+<body>
+  <h1>GMC Press Review</h1>
+  <div id="entries"></div>
+
+  <script>
+    fetch('data/entries.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('entries');
+        data.forEach(entry => {
+          const div = document.createElement('div');
+          div.className = 'entry';
+          div.innerHTML = `
+            <h2><a href="${entry.link}" target="_blank">${entry.title}</a></h2>
+            <p><strong>${entry.date}</strong> – ${entry.outlet}</p>
+            <p><em>${entry.researcher}</em></p>
+          `;
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
