@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install google-api-python-client google-auth fitz PyMuPDF
+          pip install google-api-python-client google-auth PyMuPDF
 
       - name: Run PDF parser
         env:
