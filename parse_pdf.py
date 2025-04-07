@@ -60,10 +60,11 @@ def extract_entries_from_pdf(pdf_data):
     doc = fitz.open(stream=pdf_data, filetype="pdf")
     for page in doc:
         text = page.get_text()
-        print("---- PAGE TEXT ----")
-        print(text)
-        print("---- END TEXT ----")
         links = [l.get('uri') for l in page.get_links() if l.get('uri', '').startswith("https://")]
+        print(f"Matched text: {text}")
+        print(f"Found {len(links)} https links")
+        print("Matched researchers:")
+        print([name for name in RESEARCHERS if name.lower() in text.lower()])
         if any(name.lower() in text.lower() for name in RESEARCHERS) and links:
             for link in links:
                 title_line = next((line for line in text.split('\n') if len(line.strip()) > 10), "Untitled Article")
