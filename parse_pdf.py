@@ -111,4 +111,4 @@ if __name__ == "__main__":
         save_last_run_timestamp(latest_time)
         print(f"✅ Added {len(all_new_entries)} new entries.")
     else:
-        print("ℹ️ No new entries found")
+        print(" No new entries found")
